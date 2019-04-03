@@ -32,7 +32,6 @@ class Friends extends React.Component {
                             <h3> {friend.name}</h3>
                             <p> Is {friend.age} years old. </p>
                             <p> E-mail: {friend.email}</p>
-
                            </div>
                        )
                    })}</p> 
