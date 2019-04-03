@@ -1,44 +1,26 @@
 import React from 'react';
-import axios from 'axios';
 
-class Friends extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            friends: []
-        };
-    }
-    componentDidMount(){
-        axios
-        .get('http://localhost:5000/friends')
-        .then(response => {
-            this.setState({friends: response.data})
-            console.log(this.state.friends)
-        })
-        .catch(err => console.log(err))
-    }
+const Friends = (props) =>{
+    return (
+        <div>
+        <form>
 
-    render() {
-        return(
-            <div>
-                <form>
+        </form>
+        <h2> Current Friends</h2>
+        <div>
+            {props.friends.map((friend, i) => {
+               return (
+                   <div key = {i}> 
+                    <h3> {friend.name}</h3>
+                    <p> Is {friend.age} years old. </p>
+                    <p> E-mail: {friend.email}</p>
 
-                </form>
-                <h2> Current Friends</h2>
-                <div>
-                   <p> {this.state.friends.map(friend => {
-                       return (
-                           <div> 
-                            <h3> {friend.name}</h3>
-                            <p> Is {friend.age} years old. </p>
-                            <p> E-mail: {friend.email}</p>
-                           </div>
-                       )
-                   })}</p> 
-                </div>
-            </div>
-        )
-    }
+                   </div>
+               )
+           })}
+        </div>
+    </div>
+    )
 }
 
 export default Friends;
