@@ -17,12 +17,17 @@ componentDidMount(){
         this.setState({friends: response.data})
     })
     .catch(err => console.log(err))
-}
+};
+
+updateFriend = newFriend => {
+  this.setState({friends: newFriend});
+};
+
 
   render() {
     return (
       <div className="App">
-        <Route path = '/friends' render = {props => <Friends {...props} friends = {this.state.friends} />} />
+        <Route exact path = '/' render = {props => <Friends {...props} friends = {this.state.friends} updateFriend = {this.updateFriend}/>} />
       </div>
     );
   }
